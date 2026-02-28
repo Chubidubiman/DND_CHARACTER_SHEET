@@ -746,6 +746,222 @@
       .coins-grid { grid-template-columns: repeat(5, 1fr); gap: 3px; }
     }
 
+    /* ── Dice Roller ─────────────────────────────────────────── */
+    .dice-roller {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .dice-type-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .dice-type-btn {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border: 2px solid var(--border-accent);
+      background: var(--bg-card-alt);
+      color: var(--text-secondary);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 52px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .dice-type-btn:hover {
+      border-color: var(--accent-dim);
+      color: var(--accent);
+      background: var(--bg-hover);
+    }
+
+    .dice-type-btn.active {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      background: rgba(200, 168, 78, 0.12);
+      box-shadow: 0 0 10px rgba(200, 168, 78, 0.2);
+    }
+
+    .dice-qty-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .dice-qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dice-qty-display {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+      min-width: 32px;
+      text-align: center;
+    }
+
+    .dice-result-area {
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dice-result-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .dice-result-total {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .dice-result-total.dice-animate {
+      animation: diceRollAnim 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    @keyframes diceRollAnim {
+      0%   { transform: scale(1.4) rotate(-4deg); opacity: 0.4; }
+      60%  { transform: scale(0.93) rotate(2deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .dice-result-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .die-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 26px;
+      padding: 0 6px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .die-chip.die-max {
+      border-color: var(--success);
+      color: var(--success);
+      background: rgba(78, 202, 122, 0.1);
+    }
+
+    .die-chip.die-min {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: rgba(232, 80, 80, 0.1);
+    }
+
+    .die-chip.die-mod {
+      border-color: var(--accent-dim);
+      color: var(--accent);
+      background: rgba(200, 168, 78, 0.08);
+      font-style: italic;
+    }
+
+    .dice-roll-btn {
+      font-size: 1rem !important;
+      padding: 10px 26px !important;
+      flex-shrink: 0;
+    }
+
+    .dice-history {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .dice-history-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .dice-history-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .dice-history-row:last-child { border-bottom: none; }
+
+    .dice-history-formula {
+      color: var(--accent);
+      font-weight: 700;
+      min-width: 68px;
+      font-family: var(--font-heading);
+    }
+
+    .dice-history-rolls {
+      color: var(--text-secondary);
+      flex: 1;
+      font-size: 0.75rem;
+    }
+
+    .dice-history-total {
+      font-weight: 700;
+      color: var(--accent-bright);
+      min-width: 36px;
+      text-align: right;
+    }
+
+    .dice-mod-field {
+      width: 70px !important;
+      text-align: center !important;
+    }
+
+    @media (max-width: 700px) {
+      .dice-roller {
+        grid-template-columns: 1fr;
+      }
+      .dice-result-area {
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        min-height: auto;
+        padding: 12px;
+      }
+      .dice-result-total { font-size: 2.5rem; margin-bottom: 0; }
+    }
+
     /* Print styles */
     @media print {
       body { background: #fff; color: #111; }
@@ -1067,6 +1283,54 @@
     <div class="card full-width">
       <h2>Notes</h2>
       <textarea id="notes" style="min-height:120px" placeholder="Additional notes, backstory, session log..."></textarea>
+    </div>
+
+    <!-- Dice Roller -->
+    <div class="card full-width">
+      <h2>Dice Roller</h2>
+      <div class="dice-roller">
+
+        <!-- Controls -->
+        <div class="dice-controls-area">
+          <label style="margin-bottom:8px;">Dice Type</label>
+          <div class="dice-type-selector" id="diceTypeSelector">
+            <button class="dice-type-btn" data-sides="4"   onclick="selectDiceType(4)">d4</button>
+            <button class="dice-type-btn" data-sides="6"   onclick="selectDiceType(6)">d6</button>
+            <button class="dice-type-btn" data-sides="8"   onclick="selectDiceType(8)">d8</button>
+            <button class="dice-type-btn" data-sides="10"  onclick="selectDiceType(10)">d10</button>
+            <button class="dice-type-btn" data-sides="12"  onclick="selectDiceType(12)">d12</button>
+            <button class="dice-type-btn active" data-sides="20"  onclick="selectDiceType(20)">d20</button>
+            <button class="dice-type-btn" data-sides="100" onclick="selectDiceType(100)">d100</button>
+          </div>
+
+          <div class="dice-qty-row">
+            <div class="field">
+              <label>Quantity</label>
+              <div class="dice-qty-controls">
+                <button class="btn btn-small" onclick="changeDiceQty(-1)">−</button>
+                <span class="dice-qty-display" id="diceQtyDisplay">1</span>
+                <button class="btn btn-small" onclick="changeDiceQty(1)">+</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Modifier</label>
+              <input type="number" id="diceMod" value="0" class="dice-mod-field">
+            </div>
+            <button class="btn btn-primary dice-roll-btn" onclick="rollDice()">⚄ Roll</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="dice-result-area">
+          <div class="dice-result-label" id="diceResultLabel">Result</div>
+          <div class="dice-result-total" id="diceTotal">--</div>
+          <div class="dice-result-breakdown" id="diceBreakdown"></div>
+        </div>
+
+      </div>
+
+      <!-- History -->
+      <div class="dice-history" id="diceHistory"></div>
     </div>
 
   </div>
@@ -1425,6 +1689,75 @@
       }
 
       recalculateAll();
+    }
+
+    // ── Dice Roller ───────────────────────────────────────────────
+    let diceQty = 1;
+    let selectedDieSides = 20;
+    const diceRollHistory = [];
+
+    function selectDiceType(sides) {
+      selectedDieSides = sides;
+      document.querySelectorAll('.dice-type-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.sides) === sides);
+      });
+    }
+
+    function changeDiceQty(delta) {
+      diceQty = Math.max(1, Math.min(20, diceQty + delta));
+      document.getElementById('diceQtyDisplay').textContent = diceQty;
+    }
+
+    function rollDice() {
+      const sides = selectedDieSides;
+      const qty   = diceQty;
+      const mod   = parseInt(document.getElementById('diceMod').value) || 0;
+
+      const rolls = Array.from({ length: qty }, () => Math.floor(Math.random() * sides) + 1);
+      const sum   = rolls.reduce((a, b) => a + b, 0);
+      const total = sum + mod;
+
+      // Animate total
+      const totalEl = document.getElementById('diceTotal');
+      totalEl.classList.remove('dice-animate');
+      void totalEl.offsetWidth;
+      totalEl.textContent = total;
+      totalEl.classList.add('dice-animate');
+
+      // Formula label
+      const modStr = mod !== 0 ? ` ${mod >= 0 ? '+' : ''}${mod}` : '';
+      const formula = `${qty}d${sides}${modStr}`;
+      document.getElementById('diceResultLabel').textContent = formula;
+
+      // Individual chips
+      const chips = rolls.map(r => {
+        const cls = r === sides ? 'die-max' : r === 1 ? 'die-min' : '';
+        return `<span class="die-chip ${cls}">${r}</span>`;
+      });
+      if (mod !== 0) {
+        chips.push(`<span class="die-chip die-mod">${mod >= 0 ? '+' : ''}${mod}</span>`);
+      }
+      document.getElementById('diceBreakdown').innerHTML = chips.join('');
+
+      // History
+      diceRollHistory.unshift({ formula, rolls, mod, total });
+      if (diceRollHistory.length > 10) diceRollHistory.pop();
+      renderDiceHistory();
+    }
+
+    function renderDiceHistory() {
+      const container = document.getElementById('diceHistory');
+      if (diceRollHistory.length === 0) { container.innerHTML = ''; return; }
+      const rows = diceRollHistory.map(h => {
+        const modStr = h.mod !== 0 ? ` ${h.mod >= 0 ? '+' : ''}${h.mod}` : '';
+        return `
+          <div class="dice-history-row">
+            <span class="dice-history-formula">${h.formula}</span>
+            <span class="dice-history-rolls">[${h.rolls.join(', ')}]${modStr}</span>
+            <span class="dice-history-total">${h.total}</span>
+          </div>`;
+      }).join('');
+      container.innerHTML = `<div class="dice-history-title">Roll History</div>${rows}`;
     }
 
     // ── Event Listeners ───────────────────────────────────────────
